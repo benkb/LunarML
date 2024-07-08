@@ -97,7 +97,7 @@ src/syntax.grm.sml src/syntax.grm.sig: src/syntax.grm
 	mlyacc $<
 
 src/primitives.sml: src/primitives.lua
-	$(LUA) src/primitives.lua $@ > /dev/null
+	/usr/local/Cellar/lua@5.3/5.3.6/bin/lua5.3 src/primitives.lua $@ > /dev/null
 
 src/command-line-settings.sml: src/command-line-settings.lua util/record.lua
 	$(LUA) util/record.lua $< > $@

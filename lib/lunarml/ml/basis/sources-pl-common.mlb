@@ -1,0 +1,210 @@
+lunarml-prim.mlb
+local
+ann "nonexhaustiveRaise ignore"
+    "sequenceNonUnit ignore"
+    "valDescInComments warn"
+    "allowExtendedNumConsts true"
+    "allowVectorExps true"
+    "allowHexFloatConsts true"
+    "allowInfixingDot true"
+    "allowPrim true"
+    "allowOverload true" in
+general.sml
+option.sml (* depends on unit (general.sml) *)
+perl5/int-prim.sml
+list.sml (* depends on int (-, +), option, General.Subscript, General.order *)
+unsafe.sml
+$(TARGET_LANG)/vector-prim.sml (* depends on int, Unsafe, Subscript, List.tabulate *)
+vector.sml (* depends on vector-prim, option *)
+bool.sml
+widechar-prim-16.sml
+widestring-prim-16.sml (* depends on WideChar.char *)
+lunarml.sml
+perl5/perl.sml
+$(TARGET_LANG)/string-prim.sml
+$(TARGET_LANG)/array-prim.sml (* depends on int, Unsafe, Subscript, List.tabulate *)
+math-sig.sml
+string-cvt-sig.sml
+ieee-real-0.sml
+perl5/word-prim.sml
+perl5/real-prim.sml
+char-prim.sml
+string-cvt-0.sml
+perl5/int-1.sml
+perl5/word-1.sml
+perl5/real-1.sml
+perl5/math.sml
+perl5/string-1.sml
+perl5/char-1.sml
+string-cvt-1.sml
+perl5/string-2.sml
+perl5/vector-1.sml
+ieee-real-1.sml
+vector-sig.sml
+array.sml
+scan-num-utils.sml
+perl5/int-inf.sml
+perl5/word.sml
+mono-sequence.sml
+substring.sml
+perl5/word-sequence.sml
+perl5/scan-num.sml (* depends on Word8, Substring *)
+large-int-is-int-inf.sml
+perl5/int.sml
+perl5/mono-sequence.sml
+unsafe-mono-sequence.sml
+real.sml
+byte.sml
+pack-word.sml
+scan-bool.sml
+scan-text.sml
+string.sml
+text.sml
+perl5/widetext.sml
+perl5/time.sml
+io.sml
+vector-slice.sml
+array-slice.sml
+list-pair.sml
+end
+in
+signature ARRAY
+signature ARRAY_SLICE
+signature BOOL
+signature BYTE
+signature CHAR
+signature DATE
+signature IEEE_REAL
+signature INTEGER
+signature INT_INF
+signature IO
+signature LIST
+signature LIST_PAIR
+signature MATH
+signature MONO_ARRAY
+signature MONO_ARRAY_SLICE
+signature MONO_VECTOR
+signature MONO_VECTOR_SLICE
+signature OPTION
+signature PACK_WORD
+signature REAL
+signature STRING
+signature STRING_CVT
+signature SUBSTRING
+signature TEXT
+signature TIME
+signature UNSAFE_MONO_ARRAY (* extension *)
+signature UNSAFE_MONO_VECTOR (* extension *)
+signature VECTOR
+signature VECTOR_SLICE
+signature WORD
+structure Unsafe (* extension *)
+structure Perl (* extension *)
+structure LunarML (* extension *)
+structure Array
+structure ArraySlice
+structure Bool
+structure BoolArray
+structure BoolArraySlice
+structure BoolVector
+structure BoolVectorSlice
+structure Byte
+structure Char
+structure CharArray
+structure CharArraySlice
+structure CharVector
+structure CharVectorSlice
+structure Date
+structure General
+structure IEEEReal
+structure IO
+structure Int
+structure Int16
+structure Int16Array
+structure Int16ArraySlice
+structure Int16Vector
+structure Int16VectorSlice
+structure Int32
+structure Int32Array
+structure Int32ArraySlice
+structure Int32Vector
+structure Int32VectorSlice
+structure Int54
+structure Int64
+structure Int64Array
+structure Int64ArraySlice
+structure Int64Vector
+structure Int64VectorSlice
+structure Int8
+structure Int8Array
+structure Int8ArraySlice
+structure Int8Vector
+structure Int8VectorSlice
+structure IntArray
+structure IntArraySlice
+structure IntInf
+structure IntVector
+structure IntVectorSlice
+structure LargeInt
+structure LargeReal
+structure LargeWord
+structure List
+structure ListPair
+structure Math
+structure Option
+structure PackWord16Big
+structure PackWord16Little
+structure PackWord32Big
+structure PackWord32Little
+structure PackWord64Big
+structure PackWord64Little
+structure PackWord8Big
+structure PackWord8Little
+structure Position
+structure Real
+structure RealArray
+structure RealArraySlice
+structure RealVector
+structure RealVectorSlice
+structure String
+structure StringCvt
+structure Substring
+structure Text
+structure Time
+structure Vector
+structure VectorSlice
+structure WideChar
+structure WideCharArray
+structure WideCharArraySlice
+structure WideCharVector
+structure WideCharVectorSlice
+structure WideString
+structure WideSubstring
+structure WideText
+structure Word
+structure Word16
+structure Word16Array
+structure Word16ArraySlice
+structure Word16Vector
+structure Word16VectorSlice
+structure Word32
+structure Word32Array
+structure Word32ArraySlice
+structure Word32Vector
+structure Word32VectorSlice
+structure Word64
+structure Word64Array
+structure Word64ArraySlice
+structure Word64Vector
+structure Word64VectorSlice
+structure Word8
+structure Word8Vector
+structure Word8VectorSlice
+structure Word8Array
+structure Word8ArraySlice
+structure WordArray
+structure WordArraySlice
+structure WordVector
+structure WordVectorSlice
+top-level-mini.sml
+end

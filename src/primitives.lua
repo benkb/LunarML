@@ -31,6 +31,7 @@ do
   local exntag = {"exntag"}
   local LuaValue = {"LuaValue"}
   local JSValue = {"JavaScriptValue"}
+  local PLValue = {"PerlValue"}
   local ref = function(payloadTy) return {string_format("refOf (%s)", payloadTy[1])} end
   local list = function(elemTy) return {string_format("listOf (%s)", elemTy[1])} end
   local vector = function(elemTy) return {string_format("vectorOf (%s)", elemTy[1])} end
@@ -1332,6 +1333,212 @@ do
       mayraise = true,
       discardable = false,
     },
+    --
+    -- Perl backend
+    --
+    {
+      name = "Perl.sub",
+      srcname = "Perl_sub",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.set",
+      srcname = "Perl_set",
+      type = { vars = {}, args = {PLValue, PLValue, PLValue}, results = {} },
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.===",
+      srcname = "Perl_EQUAL",
+      type = Compare(PLValue),
+      mayraise = false,
+      discardable = true,
+    },
+    {
+      name = "Perl.!==",
+      srcname = "Perl_NOTEQUAL",
+      type = Compare(PLValue),
+      mayraise = false,
+      discardable = true,
+    },
+    {
+      name = "Perl.<",
+      srcname = "Perl_LT",
+      type = Compare(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.<=",
+      srcname = "Perl_LE",
+      type = Compare(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.>",
+      srcname = "Perl_GT",
+      type = Compare(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.>=",
+      srcname = "Perl_GE",
+      type = Compare(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.+",
+      srcname = "Perl_PLUS",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.-",
+      srcname = "Perl_MINUS",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.*",
+      srcname = "Perl_TIMES",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl./",
+      srcname = "Perl_DIVIDE",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.%",
+      srcname = "Perl_MOD",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.negate",
+      srcname = "Perl_negate",
+      type = HomoUnary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.andb",
+      srcname = "Perl_andb",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.orb",
+      srcname = "Perl_orb",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.xorb",
+      srcname = "Perl_xorb",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.notb",
+      srcname = "Perl_notb",
+      type = HomoUnary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.<<",
+      srcname = "Perl_LSHIFT",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.>>",
+      srcname = "Perl_RSHIFT",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.>>>",
+      srcname = "Perl_URSHIFT",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.**",
+      srcname = "Perl_EXP",
+      type = HomoBinary(PLValue),
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.isFalsy",
+      srcname = "Perl_isFalsy",
+      type = { vars = {}, args = {PLValue}, results = {bool} },
+      mayraise = false,
+      discardable = true,
+    },
+    {
+      name = "Perl.typeof",
+      srcname = "Perl_typeof",
+      type = { vars = {}, args = {PLValue}, results = {string16} },
+      mayraise = false,
+      discardable = true,
+    },
+    {
+      name = "Perl.global",
+      srcname = "Perl_global",
+      type = { vars = {}, args = {string16}, results = {PLValue} },
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.setGlobal",
+      srcname = "Perl_setGlobal",
+      type = { vars = {}, args = {string16, PLValue}, results = {} },
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.call",
+      srcname = "Perl_call",
+      type = { vars = {}, args = {PLValue, vector(PLValue)}, results = {PLValue} },
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.method",
+      srcname = "Perl_method",
+      type = { vars = {}, args = {PLValue, string16, vector(PLValue)}, results = {PLValue} },
+      mayraise = true,
+      discardable = false,
+    },
+    {
+      name = "Perl.new",
+      srcname = "Perl_new",
+      type = { vars = {}, args = {PLValue, vector(PLValue)}, results = {PLValue} },
+      mayraise = true,
+      discardable = false,
+    },
   }
 end
 
@@ -1610,6 +1817,7 @@ functor TypeOfPrimitives (type ty
                           val exntag : ty
                           val LuaValue : ty
                           val JavaScriptValue : ty
+                          val PerlValue : ty
                           val refOf : ty -> ty
                           val listOf : ty -> ty
                           val vectorOf : ty -> ty

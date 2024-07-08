@@ -1,0 +1,5 @@
+import {stdout as stdout$1424764} from "node:process";
+cont$14986: {
+ stdout$1424764.write(Uint8Array.of(72, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 33, 10));
+ break cont$14986;
+}

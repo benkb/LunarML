@@ -183,6 +183,35 @@ datatype PrimOp = EQUAL (* = *)
                 | JavaScript_call (* JavaScript.call *)
                 | JavaScript_method (* JavaScript.method *)
                 | JavaScript_new (* JavaScript.new *)
+                | Perl_sub (* Perl.sub *)
+                | Perl_set (* Perl.set *)
+                | Perl_EQUAL (* Perl.=== *)
+                | Perl_NOTEQUAL (* Perl.!== *)
+                | Perl_LT (* Perl.< *)
+                | Perl_LE (* Perl.<= *)
+                | Perl_GT (* Perl.> *)
+                | Perl_GE (* Perl.>= *)
+                | Perl_PLUS (* Perl.+ *)
+                | Perl_MINUS (* Perl.- *)
+                | Perl_TIMES (* Perl.* *)
+                | Perl_DIVIDE (* Perl./ *)
+                | Perl_MOD (* Perl.% *)
+                | Perl_negate (* Perl.negate *)
+                | Perl_andb (* Perl.andb *)
+                | Perl_orb (* Perl.orb *)
+                | Perl_xorb (* Perl.xorb *)
+                | Perl_notb (* Perl.notb *)
+                | Perl_LSHIFT (* Perl.<< *)
+                | Perl_RSHIFT (* Perl.>> *)
+                | Perl_URSHIFT (* Perl.>>> *)
+                | Perl_EXP (* Perl.** *)
+                | Perl_isFalsy (* Perl.isFalsy *)
+                | Perl_typeof (* Perl.typeof *)
+                | Perl_global (* Perl.global *)
+                | Perl_setGlobal (* Perl.setGlobal *)
+                | Perl_call (* Perl.call *)
+                | Perl_method (* Perl.method *)
+                | Perl_new (* Perl.new *)
 fun toString EQUAL = "="
   | toString call2 = "call2"
   | toString call3 = "call3"
@@ -577,6 +606,35 @@ fun toString EQUAL = "="
   | toString JavaScript_call = "JavaScript.call"
   | toString JavaScript_method = "JavaScript.method"
   | toString JavaScript_new = "JavaScript.new"
+  | toString Perl_sub = "Perl.sub"
+  | toString Perl_set = "Perl.set"
+  | toString Perl_EQUAL = "Perl.==="
+  | toString Perl_NOTEQUAL = "Perl.!=="
+  | toString Perl_LT = "Perl.<"
+  | toString Perl_LE = "Perl.<="
+  | toString Perl_GT = "Perl.>"
+  | toString Perl_GE = "Perl.>="
+  | toString Perl_PLUS = "Perl.+"
+  | toString Perl_MINUS = "Perl.-"
+  | toString Perl_TIMES = "Perl.*"
+  | toString Perl_DIVIDE = "Perl./"
+  | toString Perl_MOD = "Perl.%"
+  | toString Perl_negate = "Perl.negate"
+  | toString Perl_andb = "Perl.andb"
+  | toString Perl_orb = "Perl.orb"
+  | toString Perl_xorb = "Perl.xorb"
+  | toString Perl_notb = "Perl.notb"
+  | toString Perl_LSHIFT = "Perl.<<"
+  | toString Perl_RSHIFT = "Perl.>>"
+  | toString Perl_URSHIFT = "Perl.>>>"
+  | toString Perl_EXP = "Perl.**"
+  | toString Perl_isFalsy = "Perl.isFalsy"
+  | toString Perl_typeof = "Perl.typeof"
+  | toString Perl_global = "Perl.global"
+  | toString Perl_setGlobal = "Perl.setGlobal"
+  | toString Perl_call = "Perl.call"
+  | toString Perl_method = "Perl.method"
+  | toString Perl_new = "Perl.new"
 fun fromString "=" = SOME EQUAL
   | fromString "call2" = SOME call2
   | fromString "call3" = SOME call3
@@ -971,6 +1029,35 @@ fun fromString "=" = SOME EQUAL
   | fromString "JavaScript.call" = SOME JavaScript_call
   | fromString "JavaScript.method" = SOME JavaScript_method
   | fromString "JavaScript.new" = SOME JavaScript_new
+  | fromString "Perl.sub" = SOME Perl_sub
+  | fromString "Perl.set" = SOME Perl_set
+  | fromString "Perl.===" = SOME Perl_EQUAL
+  | fromString "Perl.!==" = SOME Perl_NOTEQUAL
+  | fromString "Perl.<" = SOME Perl_LT
+  | fromString "Perl.<=" = SOME Perl_LE
+  | fromString "Perl.>" = SOME Perl_GT
+  | fromString "Perl.>=" = SOME Perl_GE
+  | fromString "Perl.+" = SOME Perl_PLUS
+  | fromString "Perl.-" = SOME Perl_MINUS
+  | fromString "Perl.*" = SOME Perl_TIMES
+  | fromString "Perl./" = SOME Perl_DIVIDE
+  | fromString "Perl.%" = SOME Perl_MOD
+  | fromString "Perl.negate" = SOME Perl_negate
+  | fromString "Perl.andb" = SOME Perl_andb
+  | fromString "Perl.orb" = SOME Perl_orb
+  | fromString "Perl.xorb" = SOME Perl_xorb
+  | fromString "Perl.notb" = SOME Perl_notb
+  | fromString "Perl.<<" = SOME Perl_LSHIFT
+  | fromString "Perl.>>" = SOME Perl_RSHIFT
+  | fromString "Perl.>>>" = SOME Perl_URSHIFT
+  | fromString "Perl.**" = SOME Perl_EXP
+  | fromString "Perl.isFalsy" = SOME Perl_isFalsy
+  | fromString "Perl.typeof" = SOME Perl_typeof
+  | fromString "Perl.global" = SOME Perl_global
+  | fromString "Perl.setGlobal" = SOME Perl_setGlobal
+  | fromString "Perl.call" = SOME Perl_call
+  | fromString "Perl.method" = SOME Perl_method
+  | fromString "Perl.new" = SOME Perl_new
   | fromString _ = NONE
 fun mayRaise (Int_PLUS INT_INF) = false
   | mayRaise (Int_MINUS INT_INF) = false
@@ -1157,6 +1244,35 @@ fun mayRaise (Int_PLUS INT_INF) = false
   | mayRaise JavaScript_call = true
   | mayRaise JavaScript_method = true
   | mayRaise JavaScript_new = true
+  | mayRaise Perl_sub = true
+  | mayRaise Perl_set = true
+  | mayRaise Perl_EQUAL = false
+  | mayRaise Perl_NOTEQUAL = false
+  | mayRaise Perl_LT = true
+  | mayRaise Perl_LE = true
+  | mayRaise Perl_GT = true
+  | mayRaise Perl_GE = true
+  | mayRaise Perl_PLUS = true
+  | mayRaise Perl_MINUS = true
+  | mayRaise Perl_TIMES = true
+  | mayRaise Perl_DIVIDE = true
+  | mayRaise Perl_MOD = true
+  | mayRaise Perl_negate = true
+  | mayRaise Perl_andb = true
+  | mayRaise Perl_orb = true
+  | mayRaise Perl_xorb = true
+  | mayRaise Perl_notb = true
+  | mayRaise Perl_LSHIFT = true
+  | mayRaise Perl_RSHIFT = true
+  | mayRaise Perl_URSHIFT = true
+  | mayRaise Perl_EXP = true
+  | mayRaise Perl_isFalsy = false
+  | mayRaise Perl_typeof = false
+  | mayRaise Perl_global = true
+  | mayRaise Perl_setGlobal = true
+  | mayRaise Perl_call = true
+  | mayRaise Perl_method = true
+  | mayRaise Perl_new = true
 fun isDiscardable (Int_PLUS INT_INF) = true
   | isDiscardable (Int_MINUS INT_INF) = true
   | isDiscardable (Int_TIMES INT_INF) = true
@@ -1342,6 +1458,35 @@ fun isDiscardable (Int_PLUS INT_INF) = true
   | isDiscardable JavaScript_call = false
   | isDiscardable JavaScript_method = false
   | isDiscardable JavaScript_new = false
+  | isDiscardable Perl_sub = false
+  | isDiscardable Perl_set = false
+  | isDiscardable Perl_EQUAL = true
+  | isDiscardable Perl_NOTEQUAL = true
+  | isDiscardable Perl_LT = false
+  | isDiscardable Perl_LE = false
+  | isDiscardable Perl_GT = false
+  | isDiscardable Perl_GE = false
+  | isDiscardable Perl_PLUS = false
+  | isDiscardable Perl_MINUS = false
+  | isDiscardable Perl_TIMES = false
+  | isDiscardable Perl_DIVIDE = false
+  | isDiscardable Perl_MOD = false
+  | isDiscardable Perl_negate = false
+  | isDiscardable Perl_andb = false
+  | isDiscardable Perl_orb = false
+  | isDiscardable Perl_xorb = false
+  | isDiscardable Perl_notb = false
+  | isDiscardable Perl_LSHIFT = false
+  | isDiscardable Perl_RSHIFT = false
+  | isDiscardable Perl_URSHIFT = false
+  | isDiscardable Perl_EXP = false
+  | isDiscardable Perl_isFalsy = true
+  | isDiscardable Perl_typeof = true
+  | isDiscardable Perl_global = false
+  | isDiscardable Perl_setGlobal = false
+  | isDiscardable Perl_call = false
+  | isDiscardable Perl_method = false
+  | isDiscardable Perl_new = false
 fun fixIntWord { int, word }
   = let fun fixInt INT = int
           | fixInt i = i
@@ -1584,6 +1729,35 @@ fun returnArity EQUAL = 1
   | returnArity JavaScript_call = 1
   | returnArity JavaScript_method = 1
   | returnArity JavaScript_new = 1
+  | returnArity Perl_sub = 1
+  | returnArity Perl_set = 0
+  | returnArity Perl_EQUAL = 1
+  | returnArity Perl_NOTEQUAL = 1
+  | returnArity Perl_LT = 1
+  | returnArity Perl_LE = 1
+  | returnArity Perl_GT = 1
+  | returnArity Perl_GE = 1
+  | returnArity Perl_PLUS = 1
+  | returnArity Perl_MINUS = 1
+  | returnArity Perl_TIMES = 1
+  | returnArity Perl_DIVIDE = 1
+  | returnArity Perl_MOD = 1
+  | returnArity Perl_negate = 1
+  | returnArity Perl_andb = 1
+  | returnArity Perl_orb = 1
+  | returnArity Perl_xorb = 1
+  | returnArity Perl_notb = 1
+  | returnArity Perl_LSHIFT = 1
+  | returnArity Perl_RSHIFT = 1
+  | returnArity Perl_URSHIFT = 1
+  | returnArity Perl_EXP = 1
+  | returnArity Perl_isFalsy = 1
+  | returnArity Perl_typeof = 1
+  | returnArity Perl_global = 1
+  | returnArity Perl_setGlobal = 0
+  | returnArity Perl_call = 1
+  | returnArity Perl_method = 1
+  | returnArity Perl_new = 1
 end;
 
 functor TypeOfPrimitives (type ty
@@ -1618,6 +1792,7 @@ functor TypeOfPrimitives (type ty
                           val exntag : ty
                           val LuaValue : ty
                           val JavaScriptValue : ty
+                          val PerlValue : ty
                           val refOf : ty -> ty
                           val listOf : ty -> ty
                           val vectorOf : ty -> ty
@@ -2028,4 +2203,33 @@ fun typeOf Primitives.EQUAL = { vars = [(tyVarEqA, IsEqType)], args = vector [ty
   | typeOf Primitives.JavaScript_call = { vars = [], args = vector [JavaScriptValue, vectorOf (JavaScriptValue)], results = [JavaScriptValue] }
   | typeOf Primitives.JavaScript_method = { vars = [], args = vector [JavaScriptValue, string16, vectorOf (JavaScriptValue)], results = [JavaScriptValue] }
   | typeOf Primitives.JavaScript_new = { vars = [], args = vector [JavaScriptValue, vectorOf (JavaScriptValue)], results = [JavaScriptValue] }
+  | typeOf Primitives.Perl_sub = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_set = { vars = [], args = vector [PerlValue, PerlValue, PerlValue], results = [] }
+  | typeOf Primitives.Perl_EQUAL = { vars = [], args = vector [PerlValue, PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_NOTEQUAL = { vars = [], args = vector [PerlValue, PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_LT = { vars = [], args = vector [PerlValue, PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_LE = { vars = [], args = vector [PerlValue, PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_GT = { vars = [], args = vector [PerlValue, PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_GE = { vars = [], args = vector [PerlValue, PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_PLUS = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_MINUS = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_TIMES = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_DIVIDE = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_MOD = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_negate = { vars = [], args = vector [PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_andb = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_orb = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_xorb = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_notb = { vars = [], args = vector [PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_LSHIFT = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_RSHIFT = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_URSHIFT = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_EXP = { vars = [], args = vector [PerlValue, PerlValue], results = [PerlValue] }
+  | typeOf Primitives.Perl_isFalsy = { vars = [], args = vector [PerlValue], results = [bool] }
+  | typeOf Primitives.Perl_typeof = { vars = [], args = vector [PerlValue], results = [string16] }
+  | typeOf Primitives.Perl_global = { vars = [], args = vector [string16], results = [PerlValue] }
+  | typeOf Primitives.Perl_setGlobal = { vars = [], args = vector [string16, PerlValue], results = [] }
+  | typeOf Primitives.Perl_call = { vars = [], args = vector [PerlValue, vectorOf (PerlValue)], results = [PerlValue] }
+  | typeOf Primitives.Perl_method = { vars = [], args = vector [PerlValue, string16, vectorOf (PerlValue)], results = [PerlValue] }
+  | typeOf Primitives.Perl_new = { vars = [], args = vector [PerlValue, vectorOf (PerlValue)], results = [PerlValue] }
 end;

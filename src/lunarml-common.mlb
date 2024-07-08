@@ -48,6 +48,9 @@ codegen-lua.sml
 js-syntax.sml
 js-transform.sml
 codegen-js.sml
+perl-syntax.sml
+perl-transform.sml
+codegen-perl.sml
 mlb-syntax.sml
 mlb-parser.sml
 driver.sml

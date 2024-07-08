@@ -1,0 +1,178 @@
+sources-pl-common.mlb
+local
+ann "sequenceNonUnit ignore"
+    "allowVectorExps true"
+    "allowPrim true"
+    "allowOverload true" in
+perl5/perl-callback.sml
+perl5/timer.sml
+perl5/text-io.sml
+perl5/bin-io-dummy.sml
+os-path-sig.sml
+os-path-unix.sml
+os-path-windows.sml
+perl5/os.sml
+prim-io.sml
+stream-io.sml
+imperative-io.sml
+text-io.sml
+perl5/command-line.sml
+end
+in
+signature ARRAY
+signature ARRAY_SLICE
+signature BOOL
+signature BYTE
+signature CHAR
+signature DATE
+signature IMPERATIVE_IO
+signature INTEGER
+signature INT_INF
+signature IO
+signature LIST
+signature LIST_PAIR
+signature MATH
+signature MONO_ARRAY
+signature MONO_ARRAY_SLICE
+signature MONO_VECTOR
+signature MONO_VECTOR_SLICE
+signature OPTION
+signature OS_PATH
+signature PACK_WORD
+signature PRIM_IO
+signature REAL
+signature STREAM_IO
+signature STRING
+signature STRING_CVT
+signature SUBSTRING
+signature TEXT
+signature TEXT_IO
+signature TEXT_STREAM_IO
+signature TIME
+signature TIMER
+signature UNSAFE_MONO_ARRAY (* extension *)
+signature UNSAFE_MONO_VECTOR (* extension *)
+signature VECTOR
+signature VECTOR_SLICE
+signature WORD
+structure Unsafe (* extension *)
+structure Perl (* extension *)
+structure LunarML (* extension *)
+structure Array
+structure ArraySlice
+structure BinIO
+structure BinPrimIO
+structure Bool
+structure BoolArray
+structure BoolArraySlice
+structure BoolVector
+structure BoolVectorSlice
+structure Byte
+structure Char
+structure CharArray
+structure CharArraySlice
+structure CharVector
+structure CharVectorSlice
+structure CommandLine
+structure Date
+structure General
+structure IEEEReal
+structure IO
+structure Int
+structure Int16
+structure Int16Array
+structure Int16ArraySlice
+structure Int16Vector
+structure Int16VectorSlice
+structure Int32
+structure Int32Array
+structure Int32ArraySlice
+structure Int32Vector
+structure Int32VectorSlice
+structure Int54
+structure Int64
+structure Int64Array
+structure Int64ArraySlice
+structure Int64Vector
+structure Int64VectorSlice
+structure Int8
+structure Int8Array
+structure Int8ArraySlice
+structure Int8Vector
+structure Int8VectorSlice
+structure IntArray
+structure IntArraySlice
+structure IntVector
+structure IntVectorSlice
+structure IntInf
+structure LargeInt
+structure LargeReal
+structure LargeWord
+structure List
+structure ListPair
+structure Math
+structure OS
+structure Option
+structure PackWord16Big
+structure PackWord16Little
+structure PackWord32Big
+structure PackWord32Little
+structure PackWord64Big
+structure PackWord64Little
+structure PackWord8Big
+structure PackWord8Little
+structure Position
+structure Real
+structure RealArray
+structure RealArraySlice
+structure RealVector
+structure RealVectorSlice
+structure String
+structure StringCvt
+structure Substring
+structure Text
+structure TextIO
+structure TextPrimIO
+structure Time
+structure Timer
+structure Vector
+structure VectorSlice
+structure WideChar
+structure WideCharArray
+structure WideCharArraySlice
+structure WideCharVector
+structure WideCharVectorSlice
+structure WideString
+structure WideSubstring
+structure WideText
+structure Word
+structure Word16
+structure Word16Array
+structure Word16ArraySlice
+structure Word16Vector
+structure Word16VectorSlice
+structure Word32
+structure Word32Array
+structure Word32ArraySlice
+structure Word32Vector
+structure Word32VectorSlice
+structure Word64
+structure Word64Array
+structure Word64ArraySlice
+structure Word64Vector
+structure Word64VectorSlice
+structure Word8
+structure Word8Vector
+structure Word8VectorSlice
+structure Word8Array
+structure Word8ArraySlice
+structure WordArray
+structure WordArraySlice
+structure WordVector
+structure WordVectorSlice
+functor ImperativeIO
+functor PrimIO
+functor UnixPath (* extension *)
+functor WindowsPath (* extension *)
+top-level.sml
+end
